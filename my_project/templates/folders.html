@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folders</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Parent Folders</h1>
+        {% for folder in folders %}
+        <h2>
+            <form action="{% url 'get_subfolders' folder.id %}" method="post">
+                {% csrf_token %}
+                <p>{{folder}}</p>
+                <button type="submit">Get Subfolders</button>
+            </form>
+        </h2>
+        {% empty %}
+        <h2>No folders available</h2>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>
